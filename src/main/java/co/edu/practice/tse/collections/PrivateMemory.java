@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder(toBuilder = true)
-public class Memory {
+public class PrivateMemory {
     @Id
     private String id;
     private String name;
