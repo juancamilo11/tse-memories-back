@@ -9,7 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder(toBuilder = true)
-public class Location {
-    private String country;
-    private String city;
+public class Visualization {
 }
