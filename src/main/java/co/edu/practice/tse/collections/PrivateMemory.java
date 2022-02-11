@@ -20,7 +20,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 public class PrivateMemory {
     @Id
-    private String id;
+    private Long id;
     private String name;
     private LocalDate memoryDate;
     private LocalDate creationDate;
