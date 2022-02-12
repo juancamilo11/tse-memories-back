@@ -4,7 +4,6 @@ import co.edu.practice.tse.collections.helpers.EnumVisibility;
 import co.edu.practice.tse.collections.helpers.Location;
 import co.edu.practice.tse.collections.helpers.MemoryPhoto;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
