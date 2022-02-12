@@ -1,10 +1,9 @@
-package co.edu.practice.tse.collections;
+package co.edu.practice.tse.dtos;
 
-import co.edu.practice.tse.collections.helpers.EnumVisibility;
-import co.edu.practice.tse.collections.helpers.Location;
-import co.edu.practice.tse.collections.helpers.MemoryPhoto;
+import co.edu.practice.tse.dtos.helpers.EnumVisibilityDto;
+import co.edu.practice.tse.dtos.helpers.LocationDto;
+import co.edu.practice.tse.dtos.helpers.MemoryPhotoDto;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -17,15 +16,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class PrivateMemory {
+public class PrivateMemoryDto {
     @Id
     private Long id;
     private String name;
     private LocalDate memoryDate;
     private LocalDate creationDate;
-    private EnumVisibility visibility;
+    private EnumVisibilityDto visibility;
     private List<String> tagList;
-    private User creator;
-    private List<MemoryPhoto> memoryPhotoList;
-    private Location location;
+    private UserDto creator;
+    private List<MemoryPhotoDto> memoryPhotoList;
+    private LocationDto location;
 }
