@@ -19,13 +19,13 @@ import java.util.List;
 @Data
 public class PrivateMemory {
     @Id
-    private Long id;
+    private String id;
     private String name;
     private LocalDate memoryDate;
     private LocalDate creationDate;
     private EnumVisibility visibility;
     private List<String> tagList;
-    private User creator;
+    private String creatorId;
     private List<MemoryPhoto> memoryPhotoList;
     private Location location;
 }

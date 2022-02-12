@@ -8,23 +8,35 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
-@Document
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class PrivateMemoryDto {
     @Id
-    private Long id;
+    @NotBlank
+    private String id;
+    @NotBlank
     private String name;
+    @DateTimeFormat(style = "yyyy-MM-dd")
     private LocalDate memoryDate;
+    @DateTimeFormat(style = "yyyy-MM-dd")
     private LocalDate creationDate;
+    @NotNull
     private EnumVisibilityDto visibility;
+    @NotEmpty
     private List<String> tagList;
-    private UserDto creator;
+    @NotBlank
+    private String creatorId;
+    @NotEmpty
     private List<MemoryPhotoDto> memoryPhotoList;
+    @NotNull
     private LocationDto location;
 }
