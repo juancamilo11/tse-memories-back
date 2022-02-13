@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,8 +17,10 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class PublicMemoryDto extends PrivateMemoryDto {
+    @NotNull
     private List<VisualizationDto> visualizationList;
-    private int numViews;
+    @Null
+    private Integer numViews;
 
     public PublicMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, EnumVisibilityDto visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, int numViews) {
         super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location);
