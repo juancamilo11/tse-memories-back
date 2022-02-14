@@ -19,6 +19,5 @@ public class UserService {
                 .fromEntityToDto(this.userRepository
                         .save(this.userMapper
                                 .fromDtoToEntity(userDto)));
-
     }
 }

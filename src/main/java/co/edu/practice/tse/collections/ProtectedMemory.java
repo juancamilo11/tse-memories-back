@@ -19,7 +19,7 @@ import java.util.List;
 public class ProtectedMemory extends PublicMemory{
     private List<String> authorizedIdList;
 
-    public ProtectedMemory(String id, String name, LocalDate memoryDate, LocalDate creationDate, EnumVisibility visibility, List<String> tagList, String creatorId, List<MemoryPhoto> memoryPhotoList, Location location, List<Visualization> visualizationList, int numViews, List<String> authorizedIdList) {
+    public ProtectedMemory(String id, String name, LocalDate memoryDate, LocalDate creationDate, EnumVisibility visibility, List<String> tagList, String creatorId, List<MemoryPhoto> memoryPhotoList, Location location, List<Visualization> visualizationList, Long numViews, List<String> authorizedIdList) {
         super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location, visualizationList, numViews);
         this.authorizedIdList = authorizedIdList;
     }
