@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -23,5 +20,11 @@ public class PrivateMemoryController {
     public ResponseEntity<PrivateMemoryDto> saveNewPrivateMemory(@RequestBody PrivateMemoryDto privateMemoryDto) {
         logger.info("[PrivateMemory] POST Recuerdo Privado");
         return new ResponseEntity(this.privateMemoryService.saveNewPrivateMemory(privateMemoryDto), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/private-memory/{userId}/{memoryId}")
+    public ResponseEntity<String> deletePrivateMemory(@PathVariable("memoryId") String memoryId, @PathVariable("userId") String userId) {
+        logger.info("[PrivateMemory] DELETE Recuerdo Privado");
+        return this.privateMemoryService.deletePrivateMemoryById(memoryId, userId);
     }
 }
