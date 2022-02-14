@@ -21,7 +21,7 @@ public class ProtectedMemoryMapper {
                 protectedMemoryDto.getName(),
                 protectedMemoryDto.getMemoryDate(),
                 protectedMemoryDto.getCreationDate(),
-                EnumVisibility.valueOf(protectedMemoryDto.getVisibility().getVisibility()),
+                protectedMemoryDto.getVisibility(),
                 protectedMemoryDto.getTagList(),
                 protectedMemoryDto.getCreatorId(),
                 protectedMemoryDto.getMemoryPhotoList()
@@ -49,7 +49,7 @@ public class ProtectedMemoryMapper {
                 protectedMemory.getName(),
                 protectedMemory.getMemoryDate(),
                 protectedMemory.getCreationDate(),
-                EnumVisibilityDto.valueOf(protectedMemory.getVisibility().getVisibility()),
+                protectedMemory.getVisibility(),
                 protectedMemory.getTagList(),
                 protectedMemory.getCreatorId(),
                 protectedMemory.getMemoryPhotoList()

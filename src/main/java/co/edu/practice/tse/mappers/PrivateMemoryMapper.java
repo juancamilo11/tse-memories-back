@@ -19,7 +19,7 @@ public class PrivateMemoryMapper {
                 privateMemoryDto.getName(),
                 privateMemoryDto.getMemoryDate(),
                 privateMemoryDto.getCreationDate(),
-                EnumVisibility.valueOf(privateMemoryDto.getVisibility().getVisibility()),
+                privateMemoryDto.getVisibility(),
                 privateMemoryDto.getTagList(),
                 privateMemoryDto.getCreatorId(),
                 privateMemoryDto.getMemoryPhotoList()
@@ -41,7 +41,7 @@ public class PrivateMemoryMapper {
                 privateMemory.getName(),
                 privateMemory.getMemoryDate(),
                 privateMemory.getCreationDate(),
-                EnumVisibilityDto.valueOf(privateMemory.getVisibility().getVisibility()),
+                privateMemory.getVisibility(),
                 privateMemory.getTagList(),
                 privateMemory.getCreatorId(),
                 privateMemory.getMemoryPhotoList()

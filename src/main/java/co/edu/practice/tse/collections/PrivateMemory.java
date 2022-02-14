@@ -22,7 +22,7 @@ public class PrivateMemory {
     private String name;
     private LocalDate memoryDate;
     private LocalDate creationDate;
-    private EnumVisibility visibility;
+    private String visibility;
     private List<String> tagList;
     private String creatorId;
     private List<MemoryPhoto> memoryPhotoList;

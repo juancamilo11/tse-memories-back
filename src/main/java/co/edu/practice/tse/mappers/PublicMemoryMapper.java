@@ -20,7 +20,7 @@ public class PublicMemoryMapper {
                 publicMemoryDto.getName(),
                 publicMemoryDto.getMemoryDate(),
                 publicMemoryDto.getCreationDate(),
-                EnumVisibility.valueOf(publicMemoryDto.getVisibility().getVisibility()),
+                publicMemoryDto.getVisibility(),
                 publicMemoryDto.getTagList(),
                 publicMemoryDto.getCreatorId(),
                 publicMemoryDto.getMemoryPhotoList()
@@ -47,7 +47,7 @@ public class PublicMemoryMapper {
                 publicMemory.getName(),
                 publicMemory.getMemoryDate(),
                 publicMemory.getCreationDate(),
-                EnumVisibilityDto.valueOf(publicMemory.getVisibility().getVisibility()),
+                publicMemory.getVisibility(),
                 publicMemory.getTagList(),
                 publicMemory.getCreatorId(),
                 publicMemory.getMemoryPhotoList()

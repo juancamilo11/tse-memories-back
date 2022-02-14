@@ -7,7 +7,7 @@ import co.edu.practice.tse.dtos.helpers.VisualizationDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.validation.constraints.NotEmpty;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.time.LocalDate;
@@ -22,9 +22,16 @@ public class PublicMemoryDto extends PrivateMemoryDto {
     @Null
     private Long numViews;
 
-    public PublicMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, EnumVisibilityDto visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, Long numViews) {
+    public PublicMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, Long numViews) {
         super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location);
         this.visualizationList = visualizationList;
         this.numViews = numViews;
+        this.validateMemoryVisibility(visibility);
+    }
+
+    private void validateMemoryVisibility(String visibility) throws IllegalArgumentException {
+        if(!EnumVisibilityDto.enumValueIsValid(visibility)) {
+            throw new IllegalArgumentException("El tipo de visibilidad no es válida");
+        }
     }
 }

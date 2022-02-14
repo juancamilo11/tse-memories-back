@@ -20,7 +20,7 @@ public class PublicMemory extends PrivateMemory {
     private List<Visualization> visualizationList;
     private Long numViews;
 
-    public PublicMemory(String id, String name, LocalDate memoryDate, LocalDate creationDate, EnumVisibility visibility, List<String> tagList, String creatorId, List<MemoryPhoto> memoryPhotoList, Location location, List<Visualization> visualizationList, Long numViews) {
+    public PublicMemory(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhoto> memoryPhotoList, Location location, List<Visualization> visualizationList, Long numViews) {
         super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location);
         this.visualizationList = visualizationList;
         this.numViews = numViews;

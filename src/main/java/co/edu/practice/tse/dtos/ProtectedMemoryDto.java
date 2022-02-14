@@ -21,8 +21,15 @@ public class ProtectedMemoryDto extends PublicMemoryDto {
     private List<String> authorizedIdList;
 
     @Builder
-    public ProtectedMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, EnumVisibilityDto visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, Long numViews, List<String> authorizedIdList) {
+    public ProtectedMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, Long numViews, List<String> authorizedIdList) {
         super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location, visualizationList, numViews);
         this.authorizedIdList = authorizedIdList;
+        this.validateMemoryVisibility(visibility);
+    }
+
+    private void validateMemoryVisibility(String visibility) throws IllegalArgumentException {
+        if(!EnumVisibilityDto.enumValueIsValid(visibility)) {
+            throw new IllegalArgumentException("El tipo de visibilidad no es válida");
+        }
     }
 }
