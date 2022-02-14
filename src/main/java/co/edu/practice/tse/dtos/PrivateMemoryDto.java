@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class PrivateMemoryDto {
-    @Id
+
     @NotBlank
     private String id;
     @NotBlank

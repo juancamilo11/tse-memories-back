@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class ProtectedMemoryDto extends PublicMemoryDto {
-    @NotEmpty
+    @NotEmpty                           //El unico ID es el del Creador
     private List<String> authorizedIdList;
 
     @Builder
