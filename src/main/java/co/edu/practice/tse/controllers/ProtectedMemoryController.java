@@ -1,6 +1,5 @@
 package co.edu.practice.tse.controllers;
 
-import co.edu.practice.tse.dtos.PrivateMemoryDto;
 import co.edu.practice.tse.dtos.ProtectedMemoryDto;
 import co.edu.practice.tse.services.ProtectedMemoryService;
 import org.slf4j.Logger;
@@ -18,13 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProtectedMemoryController {
     @Autowired
     private ProtectedMemoryService protectedMemoryService;
-
     private final Logger logger = LoggerFactory.getLogger(ProtectedMemoryController.class);
 
     @PostMapping("/post/protected-memory")
     public ResponseEntity<ProtectedMemoryDto> saveNewProtectedMemory(@RequestBody ProtectedMemoryDto protectedMemoryDto) {
-        logger.info("Guardando Recuerdo Protegido: " + protectedMemoryDto);
-
+        logger.info("[ProtectedMemory] POST Recuerdo Protegido");
         return new ResponseEntity(this.protectedMemoryService.saveNewProtectedMemory(protectedMemoryDto), HttpStatus.OK);
     }
 }

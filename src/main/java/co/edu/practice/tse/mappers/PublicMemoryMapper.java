@@ -1,12 +1,10 @@
 package co.edu.practice.tse.mappers;
 
 import co.edu.practice.tse.collections.PublicMemory;
-import co.edu.practice.tse.collections.helpers.EnumVisibility;
 import co.edu.practice.tse.collections.helpers.Location;
 import co.edu.practice.tse.collections.helpers.MemoryPhoto;
 import co.edu.practice.tse.collections.helpers.Visualization;
 import co.edu.practice.tse.dtos.PublicMemoryDto;
-import co.edu.practice.tse.dtos.helpers.EnumVisibilityDto;
 import co.edu.practice.tse.dtos.helpers.LocationDto;
 import co.edu.practice.tse.dtos.helpers.MemoryPhotoDto;
 import co.edu.practice.tse.dtos.helpers.VisualizationDto;

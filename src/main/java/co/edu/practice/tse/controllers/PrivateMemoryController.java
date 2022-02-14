@@ -1,9 +1,7 @@
 package co.edu.practice.tse.controllers;
 
 import co.edu.practice.tse.dtos.PrivateMemoryDto;
-import co.edu.practice.tse.dtos.UserDto;
 import co.edu.practice.tse.services.PrivateMemoryService;
-import co.edu.practice.tse.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PrivateMemoryController {
     @Autowired
     private PrivateMemoryService privateMemoryService;
-
     private final Logger logger = LoggerFactory.getLogger(PrivateMemoryController.class);
 
     @PostMapping("/post/private-memory")
     public ResponseEntity<PrivateMemoryDto> saveNewPrivateMemory(@RequestBody PrivateMemoryDto privateMemoryDto) {
-        logger.info("Guardando Recuerdo Privado: " + privateMemoryDto);
-
+        logger.info("[PrivateMemory] POST Recuerdo Privado");
         return new ResponseEntity(this.privateMemoryService.saveNewPrivateMemory(privateMemoryDto), HttpStatus.OK);
-
     }
 }

@@ -1,10 +1,7 @@
 package co.edu.practice.tse.services;
 
-import co.edu.practice.tse.dtos.ProtectedMemoryDto;
 import co.edu.practice.tse.dtos.PublicMemoryDto;
-import co.edu.practice.tse.mappers.ProtectedMemoryMapper;
 import co.edu.practice.tse.mappers.PublicMemoryMapper;
-import co.edu.practice.tse.repositories.ProtectedMemoryRepository;
 import co.edu.practice.tse.repositories.PublicMemoryRepository;
 import org.springframework.stereotype.Service;
 

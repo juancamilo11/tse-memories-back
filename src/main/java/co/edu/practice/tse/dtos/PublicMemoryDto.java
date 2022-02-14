@@ -30,7 +30,7 @@ public class PublicMemoryDto extends PrivateMemoryDto {
     }
 
     private void validateMemoryVisibility(String visibility) throws IllegalArgumentException {
-        if(!EnumVisibilityDto.enumValueIsValid(visibility)) {
+        if(!EnumVisibilityDto.enumValueIsValid(visibility)&& !visibility.equalsIgnoreCase("publico")) {
             throw new IllegalArgumentException("El tipo de visibilidad no es válida");
         }
     }

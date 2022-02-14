@@ -51,7 +51,7 @@ public class PrivateMemoryDto {
     }
 
     private void validateMemoryVisibility(String visibility) throws IllegalArgumentException {
-        if(!EnumVisibilityDto.enumValueIsValid(visibility)) {
+        if(!EnumVisibilityDto.enumValueIsValid(visibility) && !visibility.equalsIgnoreCase("privado")) {
             throw new IllegalArgumentException("El tipo de visibilidad no es válida");
         }
     }

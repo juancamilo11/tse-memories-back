@@ -1,6 +1,5 @@
 package co.edu.practice.tse.collections;
 
-import co.edu.practice.tse.collections.helpers.EnumVisibility;
 import co.edu.practice.tse.collections.helpers.Location;
 import co.edu.practice.tse.collections.helpers.MemoryPhoto;
 import lombok.AllArgsConstructor;

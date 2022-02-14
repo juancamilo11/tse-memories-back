@@ -1,6 +1,5 @@
 package co.edu.practice.tse.controllers;
 
-import co.edu.practice.tse.dtos.ProtectedMemoryDto;
 import co.edu.practice.tse.dtos.PublicMemoryDto;
 import co.edu.practice.tse.services.PublicMemoryService;
 import org.slf4j.Logger;
@@ -18,13 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class PublicMemoryController {
     @Autowired
     private PublicMemoryService publicMemoryService;
-
     private final Logger logger = LoggerFactory.getLogger(PublicMemoryController.class);
 
     @PostMapping("/post/public-memory")
     public ResponseEntity<PublicMemoryDto> saveNewPublicMemory(@RequestBody PublicMemoryDto publicMemoryDto) {
-        logger.info("Guardando Recuerdo Público: " + publicMemoryDto);
-
+        logger.info("[PublicMemory] POST Recuerdo Público");
         return new ResponseEntity(this.publicMemoryService.saveNewPublicMemory(publicMemoryDto), HttpStatus.OK);
     }
 }

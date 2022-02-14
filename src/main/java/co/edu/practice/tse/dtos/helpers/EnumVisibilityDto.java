@@ -1,7 +1,6 @@
 package co.edu.practice.tse.dtos.helpers;
 
 import java.util.Arrays;
-import java.util.Locale;
 
 public enum EnumVisibilityDto {
     PUBLIC("publico"), PROTECTED("protegido"), PRIVATE("privado");
