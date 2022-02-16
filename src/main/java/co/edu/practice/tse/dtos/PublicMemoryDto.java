@@ -19,13 +19,10 @@ import java.util.List;
 public class PublicMemoryDto extends PrivateMemoryDto {
     @NotNull
     private List<VisualizationDto> visualizationList;
-    @Null
-    private Long numViews;
 
-    public PublicMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, Long numViews) {
+    public PublicMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList) {
         super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location);
         this.visualizationList = visualizationList;
-        this.numViews = numViews;
         this.validateMemoryVisibility(visibility);
     }
 

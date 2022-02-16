@@ -38,7 +38,6 @@ public class ProtectedMemoryMapper {
                         .map(visualizationDto -> Visualization.builder()
                                 .visualizationDate(visualizationDto.getVisualizationDate())
                                 .userId(visualizationDto.getUserId()).build()).collect(Collectors.toList()),
-                protectedMemoryDto.getNumViews(),
                 protectedMemoryDto.getAuthorizedIdList());
     }
 
@@ -66,7 +65,6 @@ public class ProtectedMemoryMapper {
                         .map(visualization -> VisualizationDto.builder()
                                 .visualizationDate(visualization.getVisualizationDate())
                                 .userId(visualization.getUserId()).build()).collect(Collectors.toList()),
-                protectedMemory.getNumViews(),
                 protectedMemory.getAuthorizedIdList());
     }
 }

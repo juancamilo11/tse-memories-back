@@ -21,8 +21,8 @@ public class ProtectedMemoryDto extends PublicMemoryDto {
     private List<String> authorizedIdList;
 
     @Builder
-    public ProtectedMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, Long numViews, List<String> authorizedIdList) {
-        super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location, visualizationList, numViews);
+    public ProtectedMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, List<String> authorizedIdList) {
+        super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location, visualizationList);
         this.authorizedIdList = authorizedIdList;
         this.validateMemoryVisibility(visibility);
     }

@@ -36,8 +36,7 @@ public class PublicMemoryMapper {
                 publicMemoryDto.getVisualizationList().stream()
                         .map(visualizationDto -> Visualization.builder()
                                 .visualizationDate(visualizationDto.getVisualizationDate())
-                                .userId(visualizationDto.getUserId()).build()).collect(Collectors.toList()),
-                publicMemoryDto.getNumViews());
+                                .userId(visualizationDto.getUserId()).build()).collect(Collectors.toList()));
     }
 
     public PublicMemoryDto fromEntityToDto(PublicMemory publicMemory) {
@@ -63,8 +62,7 @@ public class PublicMemoryMapper {
                 publicMemory.getVisualizationList().stream()
                         .map(visualization -> VisualizationDto.builder()
                                 .visualizationDate(visualization.getVisualizationDate())
-                                .userId(visualization.getUserId()).build()).collect(Collectors.toList()),
-                publicMemory.getNumViews());
+                                .userId(visualization.getUserId()).build()).collect(Collectors.toList()));
     }
 
 }
