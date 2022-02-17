@@ -18,12 +18,12 @@ import java.util.List;
 @Data
 public class ProtectedMemoryDto extends PublicMemoryDto {
     @NotEmpty                           //El unico ID es el del Creador
-    private List<String> authorizedIdList;
+    private List<String> authorizedEmailList;
 
     @Builder
-    public ProtectedMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, List<String> authorizedIdList) {
+    public ProtectedMemoryDto(String id, String name, LocalDate memoryDate, LocalDate creationDate, String visibility, List<String> tagList, String creatorId, List<MemoryPhotoDto> memoryPhotoList, LocationDto location, List<VisualizationDto> visualizationList, List<String> authorizedEmailList) {
         super(id, name, memoryDate, creationDate, visibility, tagList, creatorId, memoryPhotoList, location, visualizationList);
-        this.authorizedIdList = authorizedIdList;
+        this.authorizedEmailList = authorizedEmailList;
         this.validateMemoryVisibility(visibility);
     }
 

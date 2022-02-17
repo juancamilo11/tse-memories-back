@@ -4,20 +4,22 @@ import co.edu.practice.tse.collections.PrivateMemory;
 import co.edu.practice.tse.dtos.PrivateMemoryDto;
 import co.edu.practice.tse.mappers.PrivateMemoryMapper;
 import co.edu.practice.tse.repositories.PrivateMemoryRepository;
+import co.edu.practice.tse.services.interfaces.PrivateMemoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PrivateMemoryService {
+public class PrivateMemoryServiceImpl implements PrivateMemoryService {
     private final PrivateMemoryRepository privateMemoryRepository;
     private final PrivateMemoryMapper privateMemoryMapper;
 
-    public PrivateMemoryService(PrivateMemoryRepository privateMemoryRepository, PrivateMemoryMapper privateMemoryMapper) {
+    public PrivateMemoryServiceImpl(PrivateMemoryRepository privateMemoryRepository, PrivateMemoryMapper privateMemoryMapper) {
         this.privateMemoryRepository = privateMemoryRepository;
         this.privateMemoryMapper = privateMemoryMapper;
     }
 
+    @Override
     public PrivateMemoryDto saveNewPrivateMemory(PrivateMemoryDto privateMemoryDto) {
         return this.privateMemoryMapper
                 .fromEntityToDto(this.privateMemoryRepository
@@ -25,6 +27,7 @@ public class PrivateMemoryService {
                                 .fromDtoToEntity(privateMemoryDto)));
     }
 
+    @Override
     public ResponseEntity<String> deletePrivateMemoryById(String memoryId, String userId) {
         boolean memoryExists = this.privateMemoryRepository
                 .existsById(memoryId);

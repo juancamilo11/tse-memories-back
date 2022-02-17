@@ -26,7 +26,7 @@ public class PrivateMemoryDto {
     @DateTimeFormat(style = "yyyy-MM-dd")
     private LocalDate creationDate;
     @NotNull
-    private String visibility;   //public, private, protected
+    private String visibility;   //publico, privvado, protegido
     @NotEmpty
     private List<String> tagList;
     @NotBlank

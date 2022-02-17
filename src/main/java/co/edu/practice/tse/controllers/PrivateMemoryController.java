@@ -1,7 +1,7 @@
 package co.edu.practice.tse.controllers;
 
 import co.edu.practice.tse.dtos.PrivateMemoryDto;
-import co.edu.practice.tse.services.PrivateMemoryService;
+import co.edu.practice.tse.services.PrivateMemoryServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class PrivateMemoryController {
     @Autowired
-    private PrivateMemoryService privateMemoryService;
+    private PrivateMemoryServiceImpl privateMemoryService;
     private final Logger logger = LoggerFactory.getLogger(PrivateMemoryController.class);
 
     @PostMapping("/post/private-memory")
