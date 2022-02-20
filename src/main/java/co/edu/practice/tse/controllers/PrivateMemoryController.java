@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class PrivateMemoryController {
@@ -17,14 +19,21 @@ public class PrivateMemoryController {
     private final Logger logger = LoggerFactory.getLogger(PrivateMemoryController.class);
 
     @PostMapping("/post/private-memory")
-    public ResponseEntity<PrivateMemoryDto> saveNewPrivateMemory(@RequestBody PrivateMemoryDto privateMemoryDto) {
+    public ResponseEntity<PrivateMemoryDto> saveOrUpdateNewPrivateMemory(@RequestBody PrivateMemoryDto privateMemoryDto) {
         logger.info("[PrivateMemory] POST Recuerdo Privado");
-        return new ResponseEntity(this.privateMemoryService.saveNewPrivateMemory(privateMemoryDto), HttpStatus.OK);
+
+        return new ResponseEntity(this.privateMemoryService.saveOrUpdateNewPrivateMemory(privateMemoryDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/private-memory/{userId}/{memoryId}")
     public ResponseEntity<String> deletePrivateMemory(@PathVariable("memoryId") String memoryId, @PathVariable("userId") String userId) {
         logger.info("[PrivateMemory] DELETE Recuerdo Privado");
         return this.privateMemoryService.deletePrivateMemoryById(memoryId, userId);
+    }
+
+    @GetMapping("/get/private-memories/{userId}")
+    public ResponseEntity<List<PrivateMemoryDto>> getAllUserPrivateMemories(@PathVariable("userId") String userId) {
+        logger.info("[PublicMemory] GET Todos los Recuerdos Protegidos");
+        return new ResponseEntity(this.privateMemoryService.getAllPrivateMemoriesByUserId(userId), HttpStatus.OK);
     }
 }

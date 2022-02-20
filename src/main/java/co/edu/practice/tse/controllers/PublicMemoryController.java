@@ -1,6 +1,7 @@
 package co.edu.practice.tse.controllers;
 
 import co.edu.practice.tse.dtos.PublicMemoryDto;
+import co.edu.practice.tse.dtos.helpers.VisualizationDto;
 import co.edu.practice.tse.services.PublicMemoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +16,13 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class PublicMemoryController {
     @Autowired
-    private PublicMemoryService publicMemoryService;
+    private PublicMemoryServiceImpl publicMemoryService;
     private final Logger logger = LoggerFactory.getLogger(PublicMemoryController.class);
 
     @PostMapping("/post/public-memory")
-    public ResponseEntity<PublicMemoryDto> saveNewPublicMemory(@RequestBody PublicMemoryDto publicMemoryDto) {
+    public ResponseEntity<PublicMemoryDto> saveOrUpdateNewPublicMemory(@RequestBody PublicMemoryDto publicMemoryDto) {
         logger.info("[PublicMemory] POST Recuerdo Público");
-        return new ResponseEntity(this.publicMemoryService.saveNewPublicMemory(publicMemoryDto), HttpStatus.OK);
+        return new ResponseEntity(this.publicMemoryService.saveOrUpdateNewPublicMemory(publicMemoryDto), HttpStatus.OK);
     }
 
     @GetMapping("/get/public-memories/{userId}")
@@ -32,5 +33,23 @@ public class PublicMemoryController {
 
     }
 
+    @GetMapping("/get/public-memory/{memoryId}")
+    public ResponseEntity<List<PublicMemoryDto>> getPublicMemoryByMemoryId(@PathVariable("memoryId") String memoryId) {
+        logger.info("[PublicMemory] GET un Recuerdo Público");
 
+        return new ResponseEntity(this.publicMemoryService.getMemoryByMemoryId(memoryId), HttpStatus.OK);
+
+    }
+
+    @PutMapping("/put/public-memory/count-view/{memoryId}")
+    public ResponseEntity<PublicMemoryDto> countPublicMemoryView(@RequestBody VisualizationDto visualizationDto, @PathVariable("memoryId") String memoryId) {
+        logger.info("[PublicMemory] PUT Registro de Visita a Recuerdo Público");
+        return new ResponseEntity(this.publicMemoryService.registerPublicMemoryView(memoryId, visualizationDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/get/public-memories/owner-email/{email}")
+    public ResponseEntity<List<PublicMemoryDto>> getAllMemoriesByOwnerEmail(@PathVariable("email") String email) {
+        logger.info("[PublicMemory] GET todos los Recuerdos Públicos Por Email Del Dueño");
+        return new ResponseEntity(this.publicMemoryService.getAllMemoriesByOwnerEmail(email), HttpStatus.OK);
+    }
 }
