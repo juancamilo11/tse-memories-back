@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://tse-memories.firebaseapp.com/")
 public class GeneralMemoryController {
 
     private final Logger logger = LoggerFactory.getLogger(GeneralMemoryController.class);
