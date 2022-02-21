@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface PrivateMemoryService {
-
     PrivateMemoryDto saveOrUpdateNewPrivateMemory(PrivateMemoryDto privateMemoryDto);
     ResponseEntity<String>  deletePrivateMemoryById(String memoryId, String userId);
     PrivateMemoryDto savePrivateMemory(PrivateMemoryDto privateMemoryDto);

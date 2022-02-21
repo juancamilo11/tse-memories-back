@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface ProtectedMemoryService {
-
     ProtectedMemoryDto saveOrUpdateNewProtectedMemory(ProtectedMemoryDto privateMemoryDto);
     ResponseEntity<String> deleteProtectedMemoryById(String memoryId, String userId);
     ProtectedMemoryDto saveOrUpdateMemory(ProtectedMemoryDto privateMemoryDto);

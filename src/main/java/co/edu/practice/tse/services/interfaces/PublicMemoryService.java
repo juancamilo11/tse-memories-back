@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface PublicMemoryService {
-
     PublicMemoryDto saveOrUpdateNewPublicMemory(PublicMemoryDto publicMemoryDto);
     ResponseEntity<String> deletePublicMemoryById(String memoryId, String userId);
     PublicMemoryDto registerPublicMemoryView(String memoryId, VisualizationDto visualizationDto);

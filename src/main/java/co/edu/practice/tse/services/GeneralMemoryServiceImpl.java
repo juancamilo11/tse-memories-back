@@ -9,6 +9,8 @@ import co.edu.practice.tse.services.interfaces.GeneralMemoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 @RequiredArgsConstructor
 public class GeneralMemoryServiceImpl implements GeneralMemoryService {
@@ -47,15 +49,11 @@ public class GeneralMemoryServiceImpl implements GeneralMemoryService {
 
     @Override
     public AllUserMemoriesListDto getAllUserMemories(String userId) {
-        var x = AllUserMemoriesListDto.builder()
+         return AllUserMemoriesListDto.builder()
                 .publicMemories(this.publicMemoryService.getAllPublicMemoriesByUserId(userId))
                 .protectedMemories(this.protectedMemoryService.getAllProtectedMemoriesByUserId(userId))
                 .privateMemories(this.privateMemoryService.getAllPrivateMemoriesByUserId(userId))
                 .build();
-        System.out.println(x.getPrivateMemories().size());
-        System.out.println(x.getPublicMemories().size());
-        System.out.println(x.getProtectedMemories().size());
-        return x;
     }
 
 }
