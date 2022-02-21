@@ -13,4 +13,6 @@ public interface PublicMemoryService {
     PublicMemoryDto registerPublicMemoryView(String memoryId, VisualizationDto visualizationDto);
     PublicMemoryDto getMemoryByMemoryId(String memoryId);
     List<PublicMemoryDto> getAllMemoriesByOwnerEmail(String email);
+    List<PublicMemoryDto> getAllPublicMemoriesByUserId(String userId);
+    PublicMemoryDto savePublicMemory(PublicMemoryDto publicMemoryDto);
 }

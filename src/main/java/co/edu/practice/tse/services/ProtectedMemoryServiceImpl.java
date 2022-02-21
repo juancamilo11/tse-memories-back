@@ -27,6 +27,7 @@ public class ProtectedMemoryServiceImpl implements ProtectedMemoryService {
     private final ProtectedMemoryMapper protectedMemoryMapper;
     private final UserRepository userRepository;
 
+    @Override
     public ProtectedMemoryDto saveOrUpdateNewProtectedMemory(ProtectedMemoryDto memoryDto) {
         if(this.publicMemoryRepository.existsById(memoryDto.getId())) {
             this.publicMemoryRepository.deleteById(memoryDto.getId());
@@ -36,6 +37,7 @@ public class ProtectedMemoryServiceImpl implements ProtectedMemoryService {
         return this.saveProtectedMemory(memoryDto);
     }
 
+    @Override
     public ProtectedMemoryDto saveProtectedMemory(ProtectedMemoryDto protectedMemoryDto) {
         return this.protectedMemoryMapper
                 .fromEntityToDto(this.protectedMemoryRepository

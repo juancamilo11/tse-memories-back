@@ -45,6 +45,7 @@ public class GeneralMemoryServiceImpl implements GeneralMemoryService {
         this.protectedMemoryRepository.deleteById(privateMemoryDto.getId());
     }
 
+    @Override
     public AllUserMemoriesListDto getAllUserMemories(String userId) {
         var x = AllUserMemoriesListDto.builder()
                 .publicMemories(this.publicMemoryService.getAllPublicMemoriesByUserId(userId))

@@ -1,7 +1,7 @@
 package co.edu.practice.tse.controllers;
 
 import co.edu.practice.tse.dtos.UserDto;
-import co.edu.practice.tse.services.UserService;
+import co.edu.practice.tse.services.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
 

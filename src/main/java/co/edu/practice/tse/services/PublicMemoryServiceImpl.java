@@ -29,6 +29,7 @@ public class PublicMemoryServiceImpl implements PublicMemoryService {
     private final PublicMemoryMapper publicMemoryMapper;
     private final UserRepository userRepository;
 
+    @Override
     public PublicMemoryDto saveOrUpdateNewPublicMemory(PublicMemoryDto memoryDto) {
         if (this.privateMemoryRepository.existsById(memoryDto.getId())) {
             this.privateMemoryRepository.deleteById(memoryDto.getId());
@@ -38,6 +39,7 @@ public class PublicMemoryServiceImpl implements PublicMemoryService {
         return this.savePublicMemory(memoryDto);
     }
 
+    @Override
     public PublicMemoryDto savePublicMemory(PublicMemoryDto publicMemoryDto) {
         return this.publicMemoryMapper
                 .fromEntityToDto(this.publicMemoryRepository
@@ -82,6 +84,7 @@ public class PublicMemoryServiceImpl implements PublicMemoryService {
                 .collect(Collectors.toList())).orElse(Collections.emptyList());
     }
 
+    @Override
     public List<PublicMemoryDto> getAllPublicMemoriesByUserId(String userId) {
         return this.publicMemoryRepository.findAllByCreatorId(userId)
                 .stream()

@@ -25,6 +25,7 @@ public class PrivateMemoryServiceImpl implements PrivateMemoryService {
     private final ProtectedMemoryRepository protectedMemoryRepository;
     private final PrivateMemoryMapper privateMemoryMapper;
 
+    @Override
     public PrivateMemoryDto saveOrUpdateNewPrivateMemory(PrivateMemoryDto memoryDto) {
         System.out.println(memoryDto);
         if(this.publicMemoryRepository.existsById(memoryDto.getId())) {
@@ -35,6 +36,7 @@ public class PrivateMemoryServiceImpl implements PrivateMemoryService {
         return this.savePrivateMemory(memoryDto);
     }
 
+    @Override
     public PrivateMemoryDto savePrivateMemory(PrivateMemoryDto privateMemoryDto) {
         return this.privateMemoryMapper
                 .fromEntityToDto(this.privateMemoryRepository
@@ -42,6 +44,7 @@ public class PrivateMemoryServiceImpl implements PrivateMemoryService {
                                 .fromDtoToEntity(privateMemoryDto)));
     }
 
+    @Override
     public ResponseEntity<String> deletePrivateMemoryById(String memoryId, String userId) {
         boolean memoryExists = this.privateMemoryRepository
                 .existsById(memoryId);
@@ -56,6 +59,7 @@ public class PrivateMemoryServiceImpl implements PrivateMemoryService {
         return new ResponseEntity("Recuerdo eliminado con éxito", HttpStatus.OK);
     }
 
+    @Override
     public List<PrivateMemoryDto> getAllPrivateMemoriesByUserId(String userId) {
         return this.privateMemoryRepository.findAllByCreatorId(userId)
                 .stream()
