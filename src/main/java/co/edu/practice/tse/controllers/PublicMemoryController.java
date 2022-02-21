@@ -2,7 +2,7 @@ package co.edu.practice.tse.controllers;
 
 import co.edu.practice.tse.dtos.PublicMemoryDto;
 import co.edu.practice.tse.dtos.helpers.VisualizationDto;
-import co.edu.practice.tse.services.PublicMemoryService;
+import co.edu.practice.tse.services.PublicMemoryServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

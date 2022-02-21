@@ -4,30 +4,44 @@ import co.edu.practice.tse.collections.PrivateMemory;
 import co.edu.practice.tse.dtos.PrivateMemoryDto;
 import co.edu.practice.tse.mappers.PrivateMemoryMapper;
 import co.edu.practice.tse.repositories.PrivateMemoryRepository;
+import co.edu.practice.tse.repositories.ProtectedMemoryRepository;
+import co.edu.practice.tse.repositories.PublicMemoryRepository;
 import co.edu.practice.tse.services.interfaces.PrivateMemoryService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 @Service
+@RequiredArgsConstructor
 public class PrivateMemoryServiceImpl implements PrivateMemoryService {
+
     private final PrivateMemoryRepository privateMemoryRepository;
+    private final PublicMemoryRepository publicMemoryRepository;
+    private final ProtectedMemoryRepository protectedMemoryRepository;
     private final PrivateMemoryMapper privateMemoryMapper;
 
-    public PrivateMemoryServiceImpl(PrivateMemoryRepository privateMemoryRepository, PrivateMemoryMapper privateMemoryMapper) {
-        this.privateMemoryRepository = privateMemoryRepository;
-        this.privateMemoryMapper = privateMemoryMapper;
+    public PrivateMemoryDto saveOrUpdateNewPrivateMemory(PrivateMemoryDto memoryDto) {
+        System.out.println(memoryDto);
+        if(this.publicMemoryRepository.existsById(memoryDto.getId())) {
+            this.publicMemoryRepository.deleteById(memoryDto.getId());
+        } else if(this.protectedMemoryRepository.existsById(memoryDto.getId())) {
+            this.protectedMemoryRepository.deleteById(memoryDto.getId());
+        }
+        return this.savePrivateMemory(memoryDto);
     }
 
-    @Override
-    public PrivateMemoryDto saveNewPrivateMemory(PrivateMemoryDto privateMemoryDto) {
+    public PrivateMemoryDto savePrivateMemory(PrivateMemoryDto privateMemoryDto) {
         return this.privateMemoryMapper
                 .fromEntityToDto(this.privateMemoryRepository
                         .save(this.privateMemoryMapper
                                 .fromDtoToEntity(privateMemoryDto)));
     }
 
-    @Override
     public ResponseEntity<String> deletePrivateMemoryById(String memoryId, String userId) {
         boolean memoryExists = this.privateMemoryRepository
                 .existsById(memoryId);
@@ -41,4 +55,12 @@ public class PrivateMemoryServiceImpl implements PrivateMemoryService {
         this.privateMemoryRepository.deleteById(memoryId);
         return new ResponseEntity("Recuerdo eliminado con éxito", HttpStatus.OK);
     }
+
+    public List<PrivateMemoryDto> getAllPrivateMemoriesByUserId(String userId) {
+        return this.privateMemoryRepository.findAllByCreatorId(userId)
+                .stream()
+                .map(this.privateMemoryMapper::fromEntityToDto)
+                .collect(Collectors.toList());
+    }
+
 }

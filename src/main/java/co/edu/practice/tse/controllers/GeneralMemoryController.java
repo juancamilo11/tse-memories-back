@@ -1,6 +1,7 @@
 package co.edu.practice.tse.controllers;
 
 import co.edu.practice.tse.dtos.PrivateMemoryDto;
+import co.edu.practice.tse.services.GeneralMemoryServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
