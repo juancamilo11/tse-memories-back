@@ -51,6 +51,25 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
+				<version>3.0.3</version>
+				<configuration>
+					<processTypes>
+						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* YourApplication</web>
+					</processTypes>
+					<appName>TSE-Memories-0.0.1-SNAPSHOT</appName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
