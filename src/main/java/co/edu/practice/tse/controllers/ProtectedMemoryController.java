@@ -27,7 +27,7 @@ public class ProtectedMemoryController {
     }
 
     @DeleteMapping("/delete/protected-memory/{userId}/{memoryId}")
-    public ResponseEntity<String> deletePrivateMemory(@PathVariable("memoryId") String memoryId, @PathVariable("userId") String userId) {
+    public ResponseEntity<String> deleteProtectedMemory(@PathVariable("memoryId") String memoryId, @PathVariable("userId") String userId) {
         logger.info("[ProtectedMemory] DELETE Recuerdo Protegido");
         return this.protectedMemoryServiceImpl.deleteProtectedMemoryById(memoryId, userId);
     }

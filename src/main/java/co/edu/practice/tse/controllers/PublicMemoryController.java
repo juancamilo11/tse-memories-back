@@ -52,4 +52,10 @@ public class PublicMemoryController {
         logger.info("[PublicMemory] GET todos los Recuerdos Públicos Por Email Del Dueño");
         return new ResponseEntity(this.publicMemoryService.getAllMemoriesByOwnerEmail(email), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/public-memory/{userId}/{memoryId}")
+    public ResponseEntity<String> deletePublicMemory(@PathVariable("memoryId") String memoryId, @PathVariable("userId") String userId) {
+        logger.info("[PrivateMemory] DELETE Recuerdo Público");
+        return this.publicMemoryService.deletePublicMemoryById(memoryId, userId);
+    }
 }

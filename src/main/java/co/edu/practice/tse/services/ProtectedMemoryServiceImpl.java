@@ -1,5 +1,6 @@
 package co.edu.practice.tse.services;
 
+import co.edu.practice.tse.collections.PrivateMemory;
 import co.edu.practice.tse.collections.ProtectedMemory;
 import co.edu.practice.tse.collections.User;
 import co.edu.practice.tse.collections.helpers.Visualization;
@@ -12,6 +13,7 @@ import co.edu.practice.tse.repositories.PublicMemoryRepository;
 import co.edu.practice.tse.repositories.UserRepository;
 import co.edu.practice.tse.services.interfaces.ProtectedMemoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +50,17 @@ public class ProtectedMemoryServiceImpl implements ProtectedMemoryService {
 
     @Override
     public ResponseEntity<String> deleteProtectedMemoryById(String memoryId, String userId) {
-        return null;
+        boolean memoryExists = this.protectedMemoryRepository
+                .existsById(memoryId);
+        if(!memoryExists) {
+            return new ResponseEntity("El recuerdo solicitado para eliminación no existe", HttpStatus.NOT_FOUND);
+        }
+        ProtectedMemory protectedMemory = this.protectedMemoryRepository.findById(memoryId).get();
+        if(!protectedMemory.getCreatorId().equals(userId)) {
+            return new ResponseEntity("El usuario no es el dueño del recuerdo, por ende no puede eliminarlo", HttpStatus.UNAUTHORIZED);
+        }
+        this.protectedMemoryRepository.deleteById(memoryId);
+        return new ResponseEntity("Recuerdo eliminado con éxito", HttpStatus.OK);
     }
 
     @Override
