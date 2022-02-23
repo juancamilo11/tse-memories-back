@@ -31,7 +31,7 @@ public class MailServiceImpl implements MailService {
             simpleMailMessage.setSubject("¡Saludos, " + senderName + " te ha compartido una gran historia!");
             simpleMailMessage.setText("Se ha compartido contigo la historia " + protectedMemory.getName() + " ocurrida en " +
                     protectedMemory.getLocation().getCity() + ", " + protectedMemory.getLocation().getCountry() + " el " +
-                    protectedMemory.getMemoryDate().toString() + "." + "\n" + "¡Visita https://tse-memories.firebaseapp.com para verlo!");
+                    protectedMemory.getMemoryDate().toString() + "." + "\n" + "¡Visita https://tse-memories.web.app/ para verlo!");
             javaMailSender.send(simpleMailMessage);
         });
         return protectedMemoryOptional.map(protectedMemory -> "Mensaje Enviado").orElse("");
