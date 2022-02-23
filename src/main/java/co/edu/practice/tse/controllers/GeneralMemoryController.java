@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "https://tse-memories.firebaseapp.com/")
+@CrossOrigin(origins = "https://tse-memories.web.app/")
 public class GeneralMemoryController {
 
     private final MailServiceImpl mailServiceImpl;
