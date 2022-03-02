@@ -1,6 +1,5 @@
 package co.edu.practice.tse.controllers;
 
-import co.edu.practice.tse.dtos.PrivateMemoryDto;
 import co.edu.practice.tse.dtos.PublicMemoryDto;
 import co.edu.practice.tse.dtos.helpers.VisualizationDto;
 import co.edu.practice.tse.services.PublicMemoryServiceImpl;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -45,7 +43,7 @@ public class PublicMemoryController {
     }
 
     @PutMapping("/put/public-memory/count-view/{memoryId}")
-    public ResponseEntity<PublicMemoryDto> countPublicMemoryView(@RequestBody VisualizationDto visualizationDto, @PathVariable("memoryId") String memoryId) {
+    public ResponseEntity<String> countPublicMemoryView(@RequestBody VisualizationDto visualizationDto, @PathVariable("memoryId") String memoryId) {
         logger.info("[PublicMemory] PUT Registro de Visita a Recuerdo Público");
         return new ResponseEntity(this.publicMemoryService.registerPublicMemoryView(memoryId, visualizationDto), HttpStatus.OK);
     }

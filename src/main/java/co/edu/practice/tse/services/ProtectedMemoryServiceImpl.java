@@ -1,6 +1,5 @@
 package co.edu.practice.tse.services;
 
-import co.edu.practice.tse.collections.PrivateMemory;
 import co.edu.practice.tse.collections.ProtectedMemory;
 import co.edu.practice.tse.collections.User;
 import co.edu.practice.tse.collections.helpers.Visualization;
@@ -76,7 +75,7 @@ public class ProtectedMemoryServiceImpl implements ProtectedMemoryService {
     }
 
     @Override
-    public ProtectedMemoryDto registerProtectedMemoryView(String memoryId, VisualizationDto visualizationDto) {
+    public String registerProtectedMemoryView(String memoryId, VisualizationDto visualizationDto) {
         Optional<ProtectedMemory> optionalProtectedMemory = this.protectedMemoryRepository.findById(memoryId);
 
         optionalProtectedMemory.ifPresent(protectedMemory -> {
@@ -88,8 +87,7 @@ public class ProtectedMemoryServiceImpl implements ProtectedMemoryService {
                 this.protectedMemoryRepository.save(protectedMemory);
             }
         });
-
-        return this.protectedMemoryMapper.fromEntityToDto(optionalProtectedMemory.orElseThrow());
+        return optionalProtectedMemory.isPresent() ? "+1 View" : "Memory not found";
     }
 
     @Override

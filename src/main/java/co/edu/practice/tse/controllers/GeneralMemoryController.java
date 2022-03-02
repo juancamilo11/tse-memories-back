@@ -3,7 +3,6 @@ package co.edu.practice.tse.controllers;
 import co.edu.practice.tse.dtos.PrivateMemoryDto;
 import co.edu.practice.tse.services.GeneralMemoryServiceImpl;
 import co.edu.practice.tse.services.MailServiceImpl;
-import co.edu.practice.tse.services.interfaces.PublicMemoryService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

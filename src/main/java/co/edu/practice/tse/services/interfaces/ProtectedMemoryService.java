@@ -10,7 +10,7 @@ public interface ProtectedMemoryService {
     ProtectedMemoryDto saveOrUpdateNewProtectedMemory(ProtectedMemoryDto privateMemoryDto);
     ResponseEntity<String> deleteProtectedMemoryById(String memoryId, String userId);
     ProtectedMemoryDto saveOrUpdateMemory(ProtectedMemoryDto privateMemoryDto);
-    ProtectedMemoryDto registerProtectedMemoryView(String memoryId, VisualizationDto visualizationDto);
+    String registerProtectedMemoryView(String memoryId, VisualizationDto visualizationDto);
     ProtectedMemoryDto saveProtectedMemory(ProtectedMemoryDto protectedMemoryDto);
     List<ProtectedMemoryDto> getAllSharedMemoriesWithAUserByUserId(String userId);
 }

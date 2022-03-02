@@ -1,6 +1,5 @@
 package co.edu.practice.tse.services;
 
-import co.edu.practice.tse.collections.ProtectedMemory;
 import co.edu.practice.tse.collections.PublicMemory;
 import co.edu.practice.tse.collections.User;
 import co.edu.practice.tse.collections.helpers.Visualization;
@@ -77,7 +76,7 @@ public class PublicMemoryServiceImpl implements PublicMemoryService {
     }
 
     @Override
-    public PublicMemoryDto registerPublicMemoryView(String memoryId, VisualizationDto visualizationDto) {
+    public String registerPublicMemoryView(String memoryId, VisualizationDto visualizationDto) {
         Optional<PublicMemory> optionalPublicMemory = this.publicMemoryRepository.findById(memoryId);
 
         optionalPublicMemory.ifPresent(publicMemory -> {
@@ -89,8 +88,7 @@ public class PublicMemoryServiceImpl implements PublicMemoryService {
                 this.publicMemoryRepository.save(publicMemory);
             }
         });
-
-        return this.publicMemoryMapper.fromEntityToDto(optionalPublicMemory.orElseThrow());
+        return optionalPublicMemory.isPresent() ? "+1 View" : "Memory not found";
     }
 
     @Override
