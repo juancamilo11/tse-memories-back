@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "https://tse-memories.web.app/")
+//@CrossOrigin(origins = "http://localhost:3000/")
 public class ProtectedMemoryController {
     @Autowired
     private ProtectedMemoryServiceImpl protectedMemoryServiceImpl;

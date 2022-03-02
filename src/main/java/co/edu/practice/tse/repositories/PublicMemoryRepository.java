@@ -10,4 +10,8 @@ import java.util.List;
 public interface PublicMemoryRepository extends MongoRepository<PublicMemory, String> {
     List<PublicMemory> findAllByCreatorId(String id);
     List<PublicMemory> findAll();
+    List<PublicMemory> findAllByName(String name);
+    List<PublicMemory> findAllByTagList(String tag);
 }
+
+

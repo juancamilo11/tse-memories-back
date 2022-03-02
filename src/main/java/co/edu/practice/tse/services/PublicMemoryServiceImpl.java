@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -47,6 +48,17 @@ public class PublicMemoryServiceImpl implements PublicMemoryService {
                 .fromEntityToDto(this.publicMemoryRepository
                         .save(this.publicMemoryMapper
                                 .fromDtoToEntity(publicMemoryDto)));
+    }
+
+    @Override
+    public List<PublicMemoryDto> getAllPublicMemoriesByNameOrTagName(String nameOrTagName) {
+        return Stream.concat(this.publicMemoryRepository.findAllByName(nameOrTagName)
+                .stream()
+                .map(this.publicMemoryMapper::fromEntityToDto),
+                this.publicMemoryRepository.findAllByTagList(nameOrTagName)
+                        .stream()
+                        .map(this.publicMemoryMapper::fromEntityToDto))
+                .collect(Collectors.toList());
     }
 
     @Override

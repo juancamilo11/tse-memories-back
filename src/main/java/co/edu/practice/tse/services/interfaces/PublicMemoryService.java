@@ -1,5 +1,6 @@
 package co.edu.practice.tse.services.interfaces;
 
+import co.edu.practice.tse.dtos.PrivateMemoryDto;
 import co.edu.practice.tse.dtos.PublicMemoryDto;
 import co.edu.practice.tse.dtos.helpers.VisualizationDto;
 import org.springframework.http.ResponseEntity;
@@ -14,4 +15,5 @@ public interface PublicMemoryService {
     List<PublicMemoryDto> getAllMemoriesByOwnerEmail(String email);
     List<PublicMemoryDto> getAllPublicMemoriesByUserId(String userId);
     PublicMemoryDto savePublicMemory(PublicMemoryDto publicMemoryDto);
+    List<PublicMemoryDto> getAllPublicMemoriesByNameOrTagName(String nameOrTagName);
 }

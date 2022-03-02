@@ -1,5 +1,6 @@
 package co.edu.practice.tse.controllers;
 
+import co.edu.practice.tse.dtos.PrivateMemoryDto;
 import co.edu.practice.tse.dtos.PublicMemoryDto;
 import co.edu.practice.tse.dtos.helpers.VisualizationDto;
 import co.edu.practice.tse.services.PublicMemoryServiceImpl;
@@ -10,10 +11,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "https://tse-memories.web.app/")
+//@CrossOrigin(origins = "http://localhost:3000/")
 public class PublicMemoryController {
     @Autowired
     private PublicMemoryServiceImpl publicMemoryService;
@@ -57,5 +60,11 @@ public class PublicMemoryController {
     public ResponseEntity<String> deletePublicMemory(@PathVariable("memoryId") String memoryId, @PathVariable("userId") String userId) {
         logger.info("[PrivateMemory] DELETE Recuerdo Público");
         return this.publicMemoryService.deletePublicMemoryById(memoryId, userId);
+    }
+
+    @GetMapping("/get/public-memories/name-or-tagname/{nameOrTagName}")
+    public ResponseEntity<List<PublicMemoryDto>> getAllMemoriesByNameOrTagname(@PathVariable("nameOrTagName") String nameOrTagName) {
+        logger.info("[GeneralController] GET All memories by name or tagName");
+        return new ResponseEntity(this.publicMemoryService.getAllPublicMemoriesByNameOrTagName(nameOrTagName), HttpStatus.OK);
     }
 }

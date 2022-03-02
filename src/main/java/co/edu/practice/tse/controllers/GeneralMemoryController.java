@@ -3,6 +3,7 @@ package co.edu.practice.tse.controllers;
 import co.edu.practice.tse.dtos.PrivateMemoryDto;
 import co.edu.practice.tse.services.GeneralMemoryServiceImpl;
 import co.edu.practice.tse.services.MailServiceImpl;
+import co.edu.practice.tse.services.interfaces.PublicMemoryService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,16 +12,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "https://tse-memories.web.app/")
+//@CrossOrigin(origins = "http://localhost:3000/")
 public class GeneralMemoryController {
 
     private final MailServiceImpl mailServiceImpl;
     private final Logger logger = LoggerFactory.getLogger(GeneralMemoryController.class);
-
 
     @Autowired
     private final GeneralMemoryServiceImpl generalMemoryService;
@@ -38,4 +40,5 @@ public class GeneralMemoryController {
         String messageResult = this.mailServiceImpl.sendMessageForMemorySharing(memoryId, senderName, email);
         return new ResponseEntity(messageResult, messageResult.length() > 0 ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
+
 }
